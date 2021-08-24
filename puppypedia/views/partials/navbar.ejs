@@ -1,0 +1,65 @@
+<header id="page-topbar">
+    <div class="navbar-header">
+        <div class="d-flex">
+            <!-- LOGO -->
+            <div class="navbar-brand-box">
+                <a href="/dashboard" class="logo logo-dark">
+                    <span class="logo-sm">
+                        <img src="/assets/images/logo.png" alt="" height="30">
+                    </span>
+                    <span class="logo-lg">
+                        <img src="/assets/images/logo.png" alt="" height="50">
+                    </span>
+                </a>
+
+              
+            </div>
+
+            <button type="button" class="btn btn-sm px-3 font-size-24 header-item waves-effect" id="vertical-menu-btn">
+                <i class="mdi mdi-menu"></i>
+            </button>
+
+            </div>
+
+        <!-- Search input -->
+
+        <div class="d-flex">
+
+            <!-- <div class="dropdown d-none d-lg-inline-block me-2">
+                <button type="button" class="btn header-item noti-icon waves-effect" data-bs-toggle="fullscreen">
+                    <i class="mdi mdi-fullscreen"></i>
+                </button>
+            </div> -->
+
+        
+
+            <div class="dropdown d-inline-block">
+                <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img class="rounded-circle header-profile-user" style="border: 2px solid #01beeb; height: 50px; width: 50px;" src="/assets/images/admin/<%=session.image%>" alt="Header Avatar">
+                </button>
+                <div class="dropdown-menu dropdown-menu-end">
+                    <!-- item-->
+                    <a class="dropdown-item" href="/profile">Profile</a>
+                    <a class="dropdown-item" href="/changepassword">Change Password</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item text-danger" href="/logout">Logout</a>
+                </div>
+            </div>
+
+            <%if(messages.error && messages.error!=''){%>
+                <div data-notify="container" id="msg" class="alert alert-dismissible  bg-danger p-r-35 animated bounceInRight" 
+                role="alert" data-notify-position="top-right" style="display: inline-block; margin: 1px auto; position: fixed; transition: all 0.5s z-index 1031; top: 20px; right: 20px;">
+                <span data-notify="icon"></span>
+                 <span data-notify="title"></span> 
+                 <span data-notify="message"><%=messages.error%></span></div>
+              <% } %>
+              <%if(messages.success && messages.success!=''){%>
+                <div data-notify="container" id="msg" class="alert alert-dismissible  bg-success p-r-35 animated bounceInRight" 
+                role="alert" data-notify-position="top-left" style="display: inline-block; margin: 1px auto; position: fixed; transition: all 0.5s z-index 1031; top: 20px; right: 20px;">
+                <span data-notify="icon"></span>
+                 <span data-notify="title"></span> 
+                 <span data-notify="message"><%=messages.success%></span></div>
+              <% } %>
+        </div>
+    </div>
+</header>

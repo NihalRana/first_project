@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<%- include('../partials/header')%>
+
+    <body>
+        <div id="preloader"><div id="status"><div class="spinner"></div></div></div>
+
+        <%- include('../partials/navbar')%>
+            <%- include('../partials/sidebar')%>
+                <div class="main-content">
+                    <div class="page-content">
+                        <div class="container-fluid">
+                            <div class="row">
+
+                                <a href="/users" class="col-md-6 col-xl-3">
+                                    <div class="card">
+                                        <div class="card-body">       
+                                            <div class="mini-stat">
+                                                <span class="mini-stat-icon bg-primary float-start"><i
+                                                        class="mdi mdi-account-multiple"></i></span>
+                                                <div class="mini-stat-info text-end">
+                                                    <span class="counter text-primary"><%=usersCount%></span>
+                                                    <h6 style="color: black;"> Users</h6>
+                                                </div>
+                                            </div> 
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <a href="/pets" class="col-md-6 col-xl-3">
+                                    <div class="card">
+                                        <div class="card-body">       
+                                            <div class="mini-stat">
+                                                <span class="mini-stat-icon bg-warning float-start"><i
+                                                        ><img src="/assets/images/pets/puppy.png" height="25" width="30"></i></span>
+                                                <div class="mini-stat-info text-end">
+                                                    <span class="counter text-primary"><%=petsCount%></span>
+                                                    <h6 style="color: black;">Total Pets</h6>
+                                                </div>
+                                            </div> 
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <a href="/categories" class="col-md-6 col-xl-3">
+                                    <div class="card">
+                                        <div class="card-body">       
+                                            <div class="mini-stat">
+                                                <span class="mini-stat-icon bg-danger float-start"><i
+                                                        class="mdi mdi-buffer"></i></span>
+                                                <div class="mini-stat-info text-end">
+                                                    <span class="counter text-primary"><%=catCount%></span>
+                                                    <h6 style="color: black;"> Categories</h6>
+                                                </div>
+                                            </div> 
+                                        </div>
+                                    </div>
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </body>
+    <%- include('../partials/footer')%>
+
+</html>

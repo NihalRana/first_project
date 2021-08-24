@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<%- include('../partials/header')%>
+
+    <body>
+        <div id="preloader"><div id="status"><div class="spinner"></div></div></div>
+
+        <%- include('../partials/navbar')%>
+            <%- include('../partials/sidebar')%>
+                <div class="main-content">
+                    <div class="page-content">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="page_heading" >
+                                                <h4 class="card-title">Users</h4>
+                                            <!-- <a href="/user/create" style="float: right; background-color:#37c1f8; color: white;" class="btn  waves-effect waves-light">Add Users</a> -->
+                                        </div>
+                                        <div class="scroll_t">
+                                            <table class="table  dt-responsive nowrap dataTable">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Name</th>
+                                                        <th>Email</th>
+                                                        <th>Image</th>
+                                                        <th>My Pets</th>
+                                                        <th>Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <% let count=1; users.forEach((user)=> { %>
+
+                                                        <tr id="tr_<%user.id%>">
+                                                            <td>
+                                                                <%= count %>
+                                                            </td>
+                                                            <td>
+                                                                <%= user.name %>
+                                                            </td>
+                                                            <td>
+                                                                <%= user.email %>
+                                                            </td>
+                                                            <td>
+                                                                <% if(user.image !='' ){ %>
+                                                                    <img src="/assets/images/users/<%=user.image%>"
+                                                                        style="width: 58px; height: 58px;border-radius: 2px;"
+                                                                        class="rounded-circle player-img" alt="">
+                                                                    <% } else { %>
+                                                                        <img src="/assets/images/users/user.png"
+                                                                            style="width: 58px; height: 58px;border-radius: 2px;"
+                                                                            class="rounded-circle player-img" alt="">
+                                                                        <% } %>
+                                                            </td>
+                                                        <td>
+                                                            <a href="/user/petsdetail/<%= user.id %>" style="margin-left: 20px;"><i class="ti-eye"></i></a>
+                                                        </td>
+                                                                     <td>
+                                                                <a href="/user/view/<%= user.id %>"><i
+                                                                        class="ti-eye"></i></a>
+                                                                <a><i
+                                                                        class=" ti-trash delete" data-table="users" data-id="<%=user.id%>" style="color: red;"></i></a>
+                                                            </td>
+                                                        </tr>
+
+                                                        <% count++ }) %>
+
+                                                </tbody>
+                                            </table>
+</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+    </body>
+    <%- include('../partials/footer')%>
+    
+</html>

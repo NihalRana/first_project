@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<%- include('../partials/header')%>
+
+    <body>
+        <div id="preloader"><div id="status"><div class="spinner"></div></div></div>
+
+        <%- include('../partials/navbar')%>
+            <%- include('../partials/sidebar')%>
+                <div class="main-content">
+                    <div class="page-content">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12" >
+                                    <div class="card ">
+                                        <div class="card-body">
+                                  
+                                    <div class="page_heading" >
+                                            <h4 class="card-title">Categories</h4>
+                                            <a style="background-color: #37c1f8; float: right;" href="/category/create" class="btn btn-primary waves-effect waves-light">Add Category</a>
+                                        </div>
+                                        </div>
+                                        <div class="scroll_t">
+    <table  class="table dt-responsive nowrap dataTable" id="dataTable" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+        <thead>
+            <tr>
+                <th >#</th>
+                <th >Name</th>
+                <th >Image</th>
+                <th >Description</th>
+                <th >Status</th>
+                <th >Actions</th>
+            </tr>
+        </thead>
+                                                <tbody>
+                                                    <% 
+                                                    let count = 1;
+                                                    categories.forEach((category) => { %>
+                        
+                                                    <tr id="tr_<%category.id%>">
+                                                        <td><%= count %></td>
+                                                        <td><%= category.name %></td>
+                                                        <td>
+                                                            <% if(category.image != ''){ %>
+                                                                <img src="/assets/images/categories/<%=category.image%>" style="width: 58px; height: 58px;border-radius: 2px;"  alt="">
+                                                                <% } else { %>
+                                                                    <img src="/assets/images/categories/nullimage.jpg" style="width: 58px; height: 58px;border-radius: 2px;" alt="">
+                                                                    <% } %>
+                                                        </td>
+                                                        <td><% if(category.description.length > 20){ %> 
+                                                            <%- category.description.slice(0,20) %>...
+                                                          <% }else{ %>
+                                                          <%- category.description%> 
+                                                          <%}%>
+                                                          </td>
+
+                                                          <td>
+                                                            <% if(category.status == 1) { %>
+                                                                        <button class="badge btn-success status" data-id="<%=category.id%>" value="0">Active</button>
+                                                            <% } else { %>
+                                                                    <button class="badge btn-danger status" data-id="<%=category.id%>" value="1">In-active</button>
+                                                            <% } %>
+                                                        </td>                                                               
+                                                                    <td>
+                                                                        <a href="/category/edit/<%= category.id %>"><i class="ti-pencil"></i></a>
+                                                                        <a class="delete" data-table="categories" data-id="<%= category.id %>"><i class=" ti-trash" style="color: red;"></i></a>
+                                                                </td>
+                                                                </tr>
+                                                                <% count++  }) %>
+                                            </tbody>
+                                            </table>
+                                        </div>
+                                        </div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </body>
+    <%- include('../partials/footer')%>
+<script>
+    $(document).ready(()=>{
+            $(document).on("click",".status",function(e){  
+        // $('.status').click(function () {
+          var id = $(this).attr('data-id')
+          var value = $(this).attr('value')
+            
+          $.ajax({
+            type: "POST",
+            url: "/status_change",
+            data: {
+              id: id,
+              value: value
+            },
+            success: function (data) {
+              window.location.reload();
+            }
+          });
+        });
+    });
+
+       
+</script>
+</html>

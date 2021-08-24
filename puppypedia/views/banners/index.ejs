@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<%- include('../partials/header')%>
+
+    <body>
+        <div id="preloader"><div id="status"><div class="spinner"></div></div></div>
+
+        <%- include('../partials/navbar')%>
+            <%- include('../partials/sidebar')%>
+                <div class="main-content">
+                    <div class="page-content">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                     
+                                    <div class="page_heading">
+                                            <h4 class="card-title">Banners</h4>
+                                        
+                                         <a style="background-color: #37c1f8; float: right;" href="/banner/create" class="btn btn-primary waves-effect waves-light">Add banner</a>
+                                
+                                        </div>
+                                        <div class="scroll_t">
+    <table  class="table dt-responsive nowrap dataTable" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+        <thead>
+            <tr>
+                <th >#</th>
+                <th >Image</th>
+                <th >Description</th>
+                <th >Status</th>
+                <th >Actions</th>
+            </tr>
+        </thead>
+                                                <tbody>
+                                                    <% 
+                                                    let count = 1;
+                                                    banners.forEach((banner) => { %>
+                        
+                                                    <tr id="tr_<%banner.id%>">
+                                                        <td><%= count %></td>
+                                                        <td>
+                                                            <% if(banner.image != ''){ %>
+                                                                <img src="/assets/images/banners/<%=banner.image%>" style="width: 58px; height: 58px;border-radius: 2px;"  alt="">
+                                                                <% } else { %>
+                                                                    <img src="/assets/images/banners/nullimage.jpg" style="width: 58px; height: 58px;border-radius: 2px;" alt="">
+                                                                    <% } %>
+                                                        </td>
+                                                        <td>
+                                                            <% if(banner.description.length > 20){ %> 
+                                                            <%= banner.description.slice(0,20) %>...
+                                                            <% }else{ %>
+                                                            <%=banner.description%> 
+                                                            <%}%>
+                                                          </td>
+
+                                                          <td>
+                                                            <% if(banner.status == 1) { %>
+                                                                        <button class="badge btn-success status" data-id="<%=banner.id%>" value="0">Active</button>
+                                                            <% } else { %>
+                                                                    <button class="badge btn-danger status" data-id="<%=banner.id%>" value="1">In-active</button>
+                                                            <% } %>
+                                                        </td>                                                               
+                                                                    <td>
+                                                                        <a href="/banner/edit/<%= banner.id %>"><i class="ti-pencil"></i></a>
+                                                                        <a class="delete" data-table="banners" data-id="<%= banner.id %>"><i class=" ti-trash" style="color: red;"></i></a>
+                                                                </td>
+                                                                </tr>
+                                                                <% count++  }) %>
+                        
+                                            </tbody>
+                                            </table>
+    </div>
+                                        </div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </body>
+    <%- include('../partials/footer')%>
+    <script>
+        $(document).ready(()=>{
+            $(document).on("click",".status",function(e){   
+            // $('.status').click(function () {
+              var id = $(this).attr('data-id')
+              var value = $(this).attr('value')
+                
+              $.ajax({
+                type: "POST",
+                url: "/banner_status",
+                data: {
+                  id: id,
+                  value: value
+                },
+                success: function (data) {
+                  window.location.reload();
+                }
+              });
+            });
+        });
+    
+           
+    </script>
+</html>

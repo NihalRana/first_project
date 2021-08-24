@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<%- include('../partials/header')%>
+
+    <body>
+        <div id="preloader"><div id="status"><div class="spinner"></div></div></div>
+
+        <%- include('../partials/navbar')%>
+            <%- include('../partials/sidebar')%>
+                <div class="main-content">
+                    <div class="page-content">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card">
+                                        <div class="card-body">
+
+                                            <h4 class="card-title">Privacy Policy</h4>
+                                            <p></p>
+    
+                                            <form action="policy" method="post">
+                                                <textarea id="elm1" name="value" ><%=policy.value%></textarea>
+                                                
+                                                <button type="submit" style="margin-top: 10px; background-color: #37c1f8; color: white;" class="btn btn-primary">Submit</button>
+                                            </form>
+    
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </body>
+    <%- include('../partials/footer')%>
+   
+</html>

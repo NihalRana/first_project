@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<%- include('../partials/header')%>
+
+    <body>
+        <!-- <div id="preloader"><div id="status"><div class="spinner"></div></div></div> -->
+
+        <%- include('../partials/navbar')%>
+            <%- include('../partials/sidebar')%>
+                <div class="main-content">
+                    <div class="page-content">
+                        <h2 class="card-title">My Pets</h2> 
+                        <%for( i=0; i < pets.length; i++){%>
+                        <div class="container-fluid">
+                            <div class="col-md-6">
+                                
+                                <div class="card">
+                                    <div class="card-body">
+
+                                        <p class="card-title-desc"></p>
+
+                                        <div class="row mb-3">
+                                            <label for="example-text-input" class="col-sm-2 col-form-label"></label>
+                                            <div class="col-sm-10">
+                                                <% if(pets[i].image != '') { %>
+                                                    <img id="blah"  style="height: 150px;" class="img-fluid img-thumbnail my-3" src="/assets/images/pets/<%= pets[i].image%>" />
+                                                <% } else { %>
+                                                    <img id="blah" style="height: 150px;" class="img-fluid img-thumbnail my-3" src="/assets/images/users/user.png" />
+                                                <% } %> 
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="example-text-input" class="col-sm-3 col-form-label">Name:</label>
+                                            <div class="col-sm-9 col-form-label">
+                                              <%=pets[i].name%>
+                                            </div>
+                                        </div>
+    
+                                        <div class="row mb-3">
+                                            <label for="example-text-input" class="col-sm-3">Gender:</label>
+                                            <div class="col-sm-9">
+                                                <%if(pets[i].gender==1){%>
+                                                    Male
+                                                    <%}else{%>
+                                                        Female
+                                                        <%}%>
+                                            </div>
+                                        </div>     
+                                        <div class="row mb-3">
+                                            <label for="example-text-input" class="col-sm-3">Age:</label>
+                                            <div class="col-sm-9">
+                                              <%=pets[i].age%>
+                                             
+                                            </div>
+                                        </div>   
+                                        
+                                        <div class="row mb-3">
+                                            <label for="example-text-input" class="col-sm-3 col-form-label">Weight:</label>
+                                            <div class="col-sm-9 col-form-label">
+                                              <%=pets[i].weight%>
+                                            </div>
+                                        </div>
+    
+                                        <div class="row mb-2">
+                                            <label for="example-text-input" class="col-sm-3 col-form-label">Breed:</label>
+                                            <div class="col-sm-9 col-form-label">
+                                              <%=pets[i].breed%>
+                                            </div>
+                                        </div>
+    
+                                        <div class="row mb-2">
+                                            <label for="example-text-input" class="col-sm-3 col-form-label">About Us:</label>
+                                            <div class="col-sm-9 col-form-label">
+                                              <%=pets[i].about%>
+                                            </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                            <%}%>
+                            <div >
+                                <button type="button" style="margin-left:150px; margin-top: 10px; background-color: #37c1f8;"  class="btn btn-primary btn-rounded"><a style="color:white;" href="/users">Back</a></button>
+
+                              </div>
+                        
+                </div>
+    </body>
+    <%- include('../partials/footer')%>
+
+</html>

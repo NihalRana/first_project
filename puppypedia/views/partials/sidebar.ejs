@@ -1,0 +1,80 @@
+<div class="vertical-menu" style="background-color:rgb(28, 30, 31)">
+
+    <div data-simplebar class="h-100">
+     
+        <!--- Sidemenu -->
+        <div id="sidebar-menu">
+            <!-- Left Menu Start -->
+            <ul class="metismenu list-unstyled" id="side-menu">
+                <li class="menu-title"></li>
+
+                <li class="<% if(title=='dashboard'){ %> mm-active <% }%>">
+                    <a href="/dashboard" class="waves-effect">
+                        <i class="ion ion-md-home"></i>
+                        <span> Dashboard </span>
+                    </a>
+                </li> 
+                
+                <li class="<% if(title=='users'){ %> mm-active <% }%>">
+                    <a href="/users" class="waves-effect">
+                        <i class="mdi mdi-account-multiple"></i>
+                        <span> Users </span>
+                    </a>
+                </li> 
+
+                <li class="<% if(title=='categories'){ %> mm-active <% }%>">
+                    <a href="/categories" class="waves-effect">
+                        <i class="mdi mdi-view-dashboard"></i>
+                        <span> Categories </span>
+                    </a>
+                </li> 
+
+                <li  class="<% if(title=='pets'){ %> mm-active <% }%>">
+                    <a href="/pets" class="waves-effect">
+                        <i class="mdi mdi-account-multiple"></i>
+                        <span> Pets </span>
+                    </a>
+                </li> 
+
+                <li  class="<% if(title=='banners'){ %> mm-active <% }%>">
+                    <a href="/banners" class="waves-effect">
+                        <i class="ion ion-md-albums"></i>
+                        <span> Banners </span>
+                    </a>
+                </li> 
+                <!-- <li>
+                    <a href="/ajaxtable" class="waves-effect">
+                        <i class="mdi mdi-calendar-check"></i>
+                        <span>AjaxTable</span>
+                    </a>
+                </li> -->
+
+                <li class="">
+                    <a href="javascript: void(0);" class="has-arrow waves-effect" aria-expanded="false">
+                        <i class="mdi mdi-format-list-bulleted-type"></i>
+                        <span>Content</span>
+                    </a>
+                    <ul class="sub-menu mm-collapse" aria-expanded="false" style="height: 0px;">
+                        <li><a href="/condition">Term And Condition</a></li>
+                        <li><a href="/policy">Privacy Policy</a></li>
+                        <li><a href="/about">About Us</a></li>
+
+                    </ul>
+                </li>
+
+
+                <!-- <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect" aria-expanded="false">
+                        <i class="mdi mdi-format-list-bulleted-type"></i>
+                        <span>Settings</span>
+                    </a>
+                    <ul class="sub-menu mm-collapse" aria-expanded="false" style="height: 0px;">
+                        <li><a href="/profile">Profile</a></li>
+                        <li><a href="/changepassword">Change Password</a></li>
+                    </ul>
+                </li> -->
+            </ul>
+        </div>
+        <!-- Sidebar -->
+    </div>
+</div>

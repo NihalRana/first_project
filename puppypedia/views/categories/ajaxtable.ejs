@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<%- include('../partials/header')%>
+
+    <body>
+        <div id="preloader"><div id="status"><div class="spinner"></div></div></div>
+
+        <%- include('../partials/navbar')%>
+            <%- include('../partials/sidebar')%>
+                <div class="main-content">
+                    <div class="page-content">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                     
+                                    <div class="page_heading">
+                                            <h4 class="card-title">Categories</h4>
+                                        
+                                         <a style="background-color: #37c1f8; float: right;" href="/banner/create" class="btn btn-primary waves-effect waves-light">Add banner</a>
+                                
+                                        </div>
+                                        <div class="scroll_t">
+    <table  class="table dt-responsive nowrap dataTable" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+        <thead>
+            <tr>
+                <th >#</th>
+                <th >Image</th>
+                <th >Description</th>
+                <th >Status</th>
+                <th >Actions</th>
+            </tr>
+        </thead>
+                                           <tfoot>
+                                               
+                                           </tfoot>
+                                            </table>
+    </div>
+                                        </div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </body>
+    <%- include('../partials/footer')%>
+   
+</html>

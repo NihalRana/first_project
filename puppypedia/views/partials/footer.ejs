@@ -1,0 +1,116 @@
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+<script defer src="/assets/js/sweetalert/sweetalert.min.js"></script>
+
+<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
+
+
+<script src="/assets/libs/jquery/jquery.min.js"></script>
+<script src="/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/libs/metismenu/metisMenu.min.js"></script>
+<script src="/assets/libs/simplebar/simplebar.min.js"></script>
+<script src="/assets/libs/node-waves/waves.min.js"></script>
+
+
+
+<!-- Peity chart-->
+<script src="/assets/libs/peity/jquery.peity.min.js"></script>
+
+<!-- DataTables -->
+<script src="/assets/plugins/jqueryDataTables/jquery.dataTables.js"></script>
+<script src="/assets/plugins/jqueryDataTables/dataTables.bootstrap.js"></script>
+
+<!-- <script src="/assets/libs/datatables.net/js/jquery.dataTables.min.js"></script> -->
+<!-- <script src="/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script> -->
+<script>
+    $(function () {
+    $('#dataTable').DataTable({
+        responsive: true
+    });
+    })
+</script>
+<!--C3 Chart-->
+<script src="/assets/libs/d3/d3.min.js"></script>
+<script src="/assets/libs/c3/c3.min.js"></script>
+<script src="/assets/js/pages/form-validation.init.js"></script>
+<script src="/assets/libs/jquery-knob/jquery.knob.min.js"></script>
+
+
+<script src="/assets/js/pages/dashboard.init.js"></script>
+<script src="/assets/libs/admin-resources/bootstrap-filestyle/bootstrap-filestyle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
+<script src="/assets/libs/tinymce/tinymce.min.js"></script>
+<script src="/assets/js/pages/form-editor.init.js"></script>
+<script src="/assets/js/app.js"></script>
+
+<!-- responsive -->
+<!-- <script src="/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script> -->
+<!-- <script src="/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script> -->
+
+<script>
+    setTimeout(() => {
+        $("#msg").hide('slow');
+    },2400);
+</script>
+
+<script>
+    $("#image").change(function() {
+  var ext = $('#image').val().split('.').pop().toLowerCase(); 
+  console.log(ext);
+   if($.inArray(ext, ['gif','png','jpg','jpeg','svg']) == -1)
+    {
+      swal ( "Oops" , "invalid Image extension!'" ,  "error" );
+      $("#imageid").attr('src','/assets/images/categories/add_img.png');
+      $("#image").val("");
+    }
+    else {
+      if (this.files && this.files[0]) {
+  var reader = new FileReader();
+  
+  reader.onload = function(e) {
+    $('#imageid').attr('src', e.target.result);
+  }
+  
+  reader.readAsDataURL(this.files[0]);
+      }
+    }
+  });
+    </script>
+
+<!-- Delete -->
+<script>
+  $(document).ready(()=>{
+    $("#dataTable").on("click", ".delete", function(e){
+          //  $('.delete').click(function (e) {
+              // alert("footer")
+               e.preventDefault();
+   
+              var id=$(this).attr('data-id')
+              var table=$(this).attr('data-table')
+              console.log(table,'...')
+              swal({
+          title: "Are you sure?",
+          text: "Once deleted, you will not be able to recover this data!",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+        })
+          .then((data) => {
+              if (data) {
+                      $.ajax({
+                          url: "/delete",
+                          method: "Delete",
+                        data:{
+                          id:id,
+                          table:table
+                        },
+                          success: function (response) {
+                              window.location.reload();
+                          },
+                      });
+                      }
+                    
+                  })
+              });
+  })
+  
+</script>

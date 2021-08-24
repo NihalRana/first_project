@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<%- include('../partials/header')%>
+
+    <body>
+        <div id="preloader"><div id="status"><div class="spinner"></div></div></div>
+
+        <%- include('../partials/navbar')%>
+            <%- include('../partials/sidebar')%>
+                <div class="main-content">
+                    <div class="page-content">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card">
+                                        <div class="card-body">
+
+                                            <h4 class="card-title">Edit Category</h4>
+                                            <!-- <a href="#" style="float: right; margin-bottom: 10px;" class="btn btn-primary waves-effect waves-light">Add Pets</a> -->
+                                            <form action="/category/edit/<%=category.id%>"  method="post" id="editCategory" enctype="multipart/form-data">
+                                                <div class="panel panel-flat">
+                                                    <div class="panel-body col-md-6">
+                                                          
+                                                            <label for="image">
+                                                                <input type="file" name="image" id="image" style="display:none;" required/>
+                                                                <%if(category.image!==""){%>
+                                                                    <img src="/assets/images/categories/<%=category.image%>" id="imageid" class="img-fluid img-thumbnail my-3" height="100" width="100" />
+
+                                                                    <%}else{%>
+                                                                        <img src="/assets/images/categories/add_img.png" id="imageid" class="img-fluid img-thumbnail my-3" height="100" width="100" />
+                                                                        <%}%>
+
+                                                             </label>
+
+
+
+                                                            <!-- <div name="filedrag">
+                                                            
+                                                                <input type="file" class="filestyle" data-input="false" name="image" value="" id="imgInp">
+                                                                <img  id="blah" height="50%" width="50%"  class="group-span-filestyle " tabindex="0"  src="/assets/images/users/user.png" />                           
+                                                            </div> -->
+                                                            </div>
+                                                        <div class="form-group">
+                                                            <label>Name:</label>
+                                                            <input type="text" class="form-control" value="<%=category.name%>" placeholder="Name" required name="name">
+                                                        </div>            
+                    
+                                        <div class="form-group">
+                                            <label>Description</label>
+                                            <textarea id="elm1" name="description" required><%=category.description%></textarea>
+                                        </div>
+                                        <label id="error_description"></label>
+                    
+                                        <div style="margin-top: 10px;">
+                                            <button type="button" style="background-color:#ec4747; border-color: #ec4747; margin-top: 10px;"  class="btn btn-danger btn-rounded"><a style="color:white;" href="/categories">Cancel</a></button>
+                                            <button type="submit" style="margin-top: 10px; background-color: #37c1f8;" class="btn btn-primary btn-rounded" onclick=" textareavalidation()">Update <i class="icon-arrow-right14 position-right"></i></button>
+                                        </div>
+                    
+                                    </div>
+                            </div>
+                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </body>
+    <%- include('../partials/footer')%>
+    <script>
+        $(document).ready(function() {
+
+                if(document.getElementById("elm1").value==''){
+                    alert('sdvcsd')
+                    $('#error_description').html("This field is required");
+			    	$('#error_description').css("color","red");
+				return false;
+                }
+                
+            var id_ = "<%=category.id %>";
+            console.log('-------id_',id_)
+            $("#editCategory").validate({
+                rules: {
+                    name: {
+                        required: true,
+                        maxlength: 25,
+                       remote:{
+                        url: '/check_category_name_availability?id='+id_,
+                       type: 'get',
+                      
+                    },
+                },
+            },
+                messages: {
+                    name: {
+						required: "This field is required",
+						maxlength: "Category cannot be more than 25 characters",
+                        remote:"This name is already exist"
+					},
+                }
+            });
+
+        });
+    </script>
+</html>
